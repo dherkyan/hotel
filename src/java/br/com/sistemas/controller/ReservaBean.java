@@ -23,9 +23,11 @@ public class ReservaBean implements Serializable{
     
      //metodo salvar
     public String adicionarReserva() {        
+        reserva.setPessoa(pessoa);
         reservaDao.addReserva(reserva);
 
         reserva = new Reserva();
+        pessoa = new Pessoa();
         return "listar_reserva";
     }
     

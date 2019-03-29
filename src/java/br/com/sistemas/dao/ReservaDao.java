@@ -20,13 +20,11 @@ public class ReservaDao {
             sessao = HibernateUtil.getSessionFactory().openSession();
             trans = sessao.beginTransaction();
 
-            Pessoa pessoa = (Pessoa) sessao.load(Pessoa.class, new Integer(1));
-
             Reserva reserva = new Reserva();
             reserva.setDataChegada(r.getDataChegada());
             reserva.setDataReserva(r.getDataReserva());
             reserva.setTempoEstadia(r.getTempoEstadia());
-            reserva.setPessoa(pessoa);
+            reserva.setPessoa(r.getPessoa());
 
             sessao.save(reserva);
             trans.commit();
