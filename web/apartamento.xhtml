@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Hotel Web</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+            <ui:define name="content">
+                <center>
+                    <h:form>      
+                        <p:fieldset legend="Cadastro de Apartamento"  style="margin-bottom:20px; margin-top: 25px; width: 500px;">
+                            <p:panelGrid columns="2">                
+                                <h:outputLabel for="id" value="ID" />
+                                <h:outputText id="id" value="#{apartamentoBean.apartamento.id}" />
+
+                                <h:outputLabel for="numero" value="Nº AP" />
+                                <p:inputText id="numero" value="#{apartamentoBean.apartamento.numero}" />
+
+                                <h:outputLabel for="andar" value="ANDAR" />
+                                <p:inputText id="andar" value="#{apartamentoBean.apartamento.andar}" />
+
+                                <h:outputLabel for="tipo" value="TIPO" />
+                                <p:inputText id="tipo" value="#{apartamentoBean.apartamento.tipo}" />                
+
+                                <p:commandButton action="#{apartamentoBean.adicionarApartamento()}" value="Salvar" icon="ui-icon-plusthick" />
+                                <p:commandButton action="#{apartamentoBean.atualizarApartamento()}" value="Atualizar" />
+                            </p:panelGrid>                       
+                        </p:fieldset>
+                    </h:form>
+                </center>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+            <ui:define name="content">
+                <h:form>                         
+                    <p:dataTable value="#{hospedagemBean.listarHospedagem()}" var="p">
+                        <p:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{p.id}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">NOME</f:facet>
+                            <h:outputText value="#{p.reserva.pessoa.nome}" />
+                        </p:column> 
+                        <p:column>
+                            <f:facet name="header">DATA_ENTRADA</f:facet>
+                            <h:outputText value="#{p.dataEntrada}" />
+                        </p:column>                
+                        <p:column>
+                            <f:facet name="header">DATA_SAIDA</f:facet>
+                            <h:outputText value="#{p.dataSaida}" />
+                        </p:column>                
+                        <p:column>
+                            <f:facet name="header">VALOR</f:facet>
+                            <h:outputText value="#{p.valor}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">OBS</f:facet>
+                            <h:outputText value="#{p.obs}" />
+                        </p:column>                
+                    </p:dataTable>
+                    <p:link style="font-size: 12px;" outcome="index" value="voltar" />                        
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

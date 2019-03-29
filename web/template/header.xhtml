@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
+    <body>
+        <ui:composition>            
+            <h:form>
+                <p:panel style="background-color: buttonface ">
+                    <center style="font-size: 18px">Sistema de Gerencimento de Hoteis</center>
+                </p:panel>                
+                <p:panel style="height: 30px;">
+                    <center>
+                        <h:link style="font-size: 12px" outcome="index" value="HOME" /> -
+                        <h:link style="font-size: 12px" outcome="pessoa" value="HOSPEDE" /> -
+                        <h:link style="font-size: 12px" outcome="apartamento" value="APARTAMENTO" /> -
+                        <h:link style="font-size: 12px" outcome="reserva" value="RESERVA" /> -
+                        <h:link style="font-size: 12px" outcome="hospedagem" value="HOSPEDAGEM" /> - 
+                        <h:link style="font-size: 12px" outcome="listar_pessoa" value="REL. HOSPEDE" /> -
+                        <h:link style="font-size: 12px" outcome="listar_apartamento" value="REL. APARTAMENTO" /> -
+                        <h:link style="font-size: 12px" outcome="listar_reserva" value="REL. RESERVA" /> -
+                        <h:link style="font-size: 12px" outcome="listar_hospedagem" value="REL. HOSPEDAGEM" />                                                                             
+                    </center>                                        
+                </p:panel>
+            </h:form>
+            <br />
+        </ui:composition>
+    </body>
+</html>

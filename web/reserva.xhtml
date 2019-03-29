@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Hotel Web</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+            <ui:define name="content">
+                <center>
+                    <h:form>      
+                        <p:fieldset legend="Cadastro de Reserva" style="margin-bottom:20px; margin-top: 25px; width: 500px;">
+                            <p:panelGrid columns="2">             
+
+                                <h:outputLabel for="id" value="ID" />
+                                <h:inputText id="id" value="#{pessoaBean.pessoa.id}" />               
+
+                                <h:outputLabel for="dt_chegada" value="DATA_CHEGADA" />                                                                              
+                                <p:inputMask id="dt_chegada" value="#{reservaBean.reserva.dataChegada}" placeholder="Ex: 99/99/9999" mask="99/99/9999">                                     
+                                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>                                
+                                </p:inputMask>
+                                
+                                 <h:outputLabel for="dt_reserva" value="DATA_RESERVA" />                                                                              
+                                <p:inputMask id="dt_reserva"  value="#{reservaBean.reserva.dataReserva}" placeholder="Ex: 99/99/9999" mask="99/99/9999">                                     
+                                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>                                
+                                </p:inputMask>                                                                
+
+                                <h:outputLabel for="tempo_estadia" value="TEMPO_ESTADIA" />
+                                <p:inputText id="tempo_estadia" value="#{reservaBean.reserva.tempoEstadia}" />
+
+                                <h:inputHidden />
+                                <p:commandButton action="#{reservaBean.adicionarReserva()}" value="salvar" icon="ui-icon-plusthick" />                
+                            </p:panelGrid>                          
+                        </p:fieldset>
+                    </h:form> 
+                </center>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

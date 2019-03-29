@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+            <ui:define name="content">
+                <center>
+                    <h:form>      
+                        <p:fieldset legend="Cadastro de Hospedagem" style="margin-bottom:20px; margin-top: 25px; width: 500px;">
+                            <p:panelGrid columns="2">             
+
+                                <h:outputLabel for="id" value="ID" />
+                                <h:inputText id="id" value="#{hospedagemBean.hospedagem.id}" />               
+
+                                <h:outputLabel for="dt_entrada" value="DATA_ENTRADA" />  
+                                  <p:inputMask id="dt_entrada" value="#{hospedagemBean.hospedagem.dataEntrada}" placeholder="Ex: 99/99/9999" mask="99/99/9999">                                     
+                                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>                                
+                                </p:inputMask>                                                                                              
+
+                                <h:outputLabel for="dt_saida" value="DATA_SAÍDA" />                                                                                                                                                                                                                                                                                                                                                                     
+                                <p:inputMask id="dt_saida"  value="#{hospedagemBean.hospedagem.dataSaida}" placeholder="Ex: 99/99/9999" mask="99/99/9999">                                     
+                                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>                                
+                                </p:inputMask>                                
+
+                                <h:outputLabel for="valor" value="VALOR" />
+                                <p:inputText id="valor" value="#{hospedagemBean.hospedagem.valor}" />
+
+                                <h:outputLabel for="obs" value="OBS" />
+                                <p:inputText id="obs" value="#{hospedagemBean.hospedagem.obs}" />
+
+                                <p:outputLabel />
+                                <p:commandButton action="#{hospedagemBean.adicionarhospedagem()}" value="salvar" icon="ui-icon-plusthick" />                
+                            </p:panelGrid>                           
+                        </p:fieldset>
+                    </h:form> 
+                </center>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
