@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Hotel Web</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/layout.xhtml">
+            <ui:define name="content">
+                <center>
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:fieldset legend="Clientes" style="margin-bottom:20px; margin-top: 25px; width: 500px;">
+                            
+                            <p:inputText id="cmp-pesquisa" value="#{novaReservaBean.pesquisa}" />
+                            <p:commandButton value="Pesquiar" id="ajax" partialSubmit="cmp-pesquisa"   update="pnl-pessoas dados-reserva msgs" action="#{novaReservaBean.pesquisarPessoa()}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+                            
+                            <p:panelGrid columns="2" id="pnl-pessoas" >             
+
+                                <p:dataTable id="tb-pessoas" rendered="#{not empty novaReservaBean.pessoas}" value="#{novaReservaBean.pessoas}" var="pessoa" selectionMode="single" selection="#{novaReservaBean.pessoaSelecionada}" rowKey="#{pessoa.id}" style="margin-top:0">
+                                    <f:facet name="header">
+                                        Clientes
+                                    </f:facet>
+                                    <p:column headerText="Name">
+                                        <h:outputText value="#{pessoa.id}" />
+                                    </p:column>
+                                    <p:column headerText="Name">
+                                        <h:outputText value="#{pessoa.nome}" />
+                                    </p:column>
+                                    <p:column headerText="Size">
+                                        <h:outputText value="#{pessoa.cpf}" />
+                                    </p:column>
+                                    <p:column headerText="Type">
+                                        <h:outputText value="#{pessoa.email}" />
+                                    </p:column>
+                                    <p:ajax event="rowSelect" listener="#{novaReservaBean.onRowSelect}" update=":form:dados-reserva" />
+                                </p:dataTable>
+
+                            </p:panelGrid>                          
+                        </p:fieldset>
+                        <p:fieldset id="dados-reserva"  legend="Cadastro de Reserva" style="margin-bottom:20px; margin-top: 25px; width: 500px;">
+                            <p:panelGrid columns="2" rendered="#{novaReservaBean.pessoaSelecionada.id > 0}">             
+
+                                <h:outputLabel for="nome" value="Nome" />
+                                <h:inputText id="nome" value="#{novaReservaBean.pessoaSelecionada.nome}" />               
+
+                                <h:outputLabel for="cpf" value="CPF" />
+                                <h:inputText id="cpf" value="#{novaReservaBean.pessoaSelecionada.cpf}" />
+                                
+                                <h:outputLabel for="dt_chegada" value="DATA_CHEGADA" />                                                                              
+                                <p:inputMask id="dt_chegada" value="#{novaReservaBean.reserva.dataChegada}" placeholder="Ex: 99/99/9999" mask="99/99/9999">                                     
+                                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>                                
+                                </p:inputMask>
+
+                                <h:outputLabel for="dt_reserva" value="DATA_RESERVA" />                                                                              
+                                <p:inputMask id="dt_reserva"  value="#{novaReservaBean.reserva.dataReserva}" placeholder="Ex: 99/99/9999" mask="99/99/9999">                                     
+                                    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>                                
+                                </p:inputMask>                                                                
+
+                                <h:outputLabel for="tempo_estadia" value="TEMPO_ESTADIA" />
+                                <p:inputText id="tempo_estadia" value="#{novaReservaBean.reserva.tempoEstadia}" />
+
+                                <h:inputHidden />
+                                <p:commandButton action="#{novaReservaBean.adicionarReserva()}" value="salvar" icon="ui-icon-plusthick" />                
+                            </p:panelGrid>                          
+                        </p:fieldset>
+                    </h:form> 
+                </center>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
